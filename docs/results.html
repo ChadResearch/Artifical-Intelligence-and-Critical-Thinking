@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>교차분석과 선정 일치도 – 경영교육의 AI와 비판적 사고</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./cases.html" rel="next">
+<link href="./methods.html" rel="prev">
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-0960e032821937e4e6c58aa64053088b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "일치 없음",
+    "search-matching-documents-text": "일치된 문서",
+    "search-copy-link-title": "검색 링크 복사",
+    "search-hide-matches-text": "추가 검색 결과 숨기기",
+    "search-more-match-text": "추가 검색결과",
+    "search-more-matches-text": "추가 검색결과",
+    "search-clear-button-title": "제거",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "취소",
+    "search-submit-button-title": "검색",
+    "search-label": "검색"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">경영교육의 AI와 비판적 사고</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="검색"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="탐색 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://drive.google.com/drive/folders/1y0rkI0BHXqXydwSLclo8tkJ_FmwdXmjb"> <i class="bi bi-google" role="img" aria-label="Google Drive">
+</i> 
+<span class="menu-text">Google Drive</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+    <a href="https://github.com/ChadResearch/Artifical-Intelligence-and-Critical-Thinking" title="소스 코드" class="quarto-navigation-tool px-1" aria-label="소스 코드"><i class="bi bi-github"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./methods.html">Methodology and Method</a></li><li class="breadcrumb-item"><a href="./results.html"><span class="chapter-title">교차분석과 선정 일치도</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">연구 개요</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Research Logs</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="토글 섹션">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./progress.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">연구 진행현황</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Research Note</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="토글 섹션">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./research.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">연구목적과 질문</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Theoretical Framework</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="토글 섹션">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./framework.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">이론과 개념적 프레임워크</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Methodology and Method</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="토글 섹션">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methods.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">연구방법과 자료</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">교차분석과 선정 일치도</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cases.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">사례 비교와 축코딩</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qca.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">별도 QCA 파일럿</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Literature Review</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="토글 섹션">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./literature.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">문헌검토와 근거</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Research Products</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="토글 섹션">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./figures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">그림 갤러리</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./manuscript.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">한글 원고 R2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">참고문헌</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">TOPICS</h2>
+   
+  <ul>
+  <li><a href="#분석1의-주요-관찰" id="toc-분석1의-주요-관찰" class="nav-link active" data-scroll-target="#분석1의-주요-관찰">분석1의 주요 관찰</a></li>
+  <li><a href="#정책-분류의-해석" id="toc-정책-분류의-해석" class="nav-link" data-scroll-target="#정책-분류의-해석">정책 분류의 해석</a></li>
+  <li><a href="#선정판정의-다중평가자-일치도" id="toc-선정판정의-다중평가자-일치도" class="nav-link" data-scroll-target="#선정판정의-다중평가자-일치도">선정판정의 다중평가자 일치도</a></li>
+  <li><a href="#결과의-경계" id="toc-결과의-경계" class="nav-link" data-scroll-target="#결과의-경계">결과의 경계</a></li>
+  <li><a href="#주요-관찰" id="toc-주요-관찰" class="nav-link" data-scroll-target="#주요-관찰">주요 관찰</a></li>
+  <li><a href="#선정판정의-다중평가자-일치도-1" id="toc-선정판정의-다중평가자-일치도-1" class="nav-link" data-scroll-target="#선정판정의-다중평가자-일치도-1">선정판정의 다중평가자 일치도</a></li>
+  <li><a href="#해석" id="toc-해석" class="nav-link" data-scroll-target="#해석">해석</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./methods.html">Methodology and Method</a></li><li class="breadcrumb-item"><a href="./results.html"><span class="chapter-title">교차분석과 선정 일치도</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">교차분석과 선정 일치도</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- pm:auto start — 앱 [public 렌더링]이 덮어씁니다 -->
+<section id="분석1의-주요-관찰" class="level2">
+<h2 class="anchored" data-anchor-id="분석1의-주요-관찰">분석1의 주요 관찰</h2>
+<p>현재 결과의 분모는 보존 실라버스 <strong>62문서</strong>입니다. 새 선정 51건의 내용분석 결과로 바꾸어 표기하지 않습니다.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 40%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>지표</th>
+<th style="text-align: right;">관찰값</th>
+<th>해석 범위</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>검토·성찰과 평가의 문서 내 병존</td>
+<td style="text-align: right;">22/62 (35.5%)</td>
+<td>동일 과제의 루브릭 정렬을 확인한 값은 아님</td>
+</tr>
+<tr class="even">
+<td>위 22문서 중 CT 직접 명시</td>
+<td style="text-align: right;">4/22 (18.2%)</td>
+<td>CT 명시와 활동설계의 구분</td>
+</tr>
+<tr class="odd">
+<td>AI 도구 근거</td>
+<td style="text-align: right;">54/62</td>
+<td>개발 역할과 중복 가능</td>
+</tr>
+<tr class="even">
+<td>AI 개발 근거</td>
+<td style="text-align: right;">28/62</td>
+<td>제작 활동만으로 CT 성취를 판단하지 않음</td>
+</tr>
+<tr class="odd">
+<td>기존 세 유형에 미배정</td>
+<td style="text-align: right;">34/62</td>
+<td>H·I 27문서, M·A 7문서를 강제 분류하지 않음</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="figures/fig04_d4_matrix.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="인지요구와 CT 연결"><img src="figures/fig04_d4_matrix.png" class="img-fluid figure-img" style="width:100.0%" alt="62문서의 기존 인지요구·CT 연결 분포와 미분류 34문서"></a></p>
+<figcaption>인지요구와 CT 연결</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="figures/fig05_alignment_ct.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="활동·평가 분류별 CT 연결"><img src="figures/fig05_alignment_ct.png" class="img-fluid figure-img" style="width:100.0%" alt="활동·평가 분류별 CT 연결의 행비율과 문서 수"></a></p>
+<figcaption>활동·평가 분류별 CT 연결</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="figures/fig06_ai_roles.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="AI 역할과 검토·성찰"><img src="figures/fig06_ai_roles.png" class="img-fluid figure-img" style="width:100.0%" alt="중복 가능한 AI 역할별 검토·성찰과 평가의 문서 내 병존"></a></p>
+<figcaption>AI 역할과 검토·성찰</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="figures/fig07_category_coverage.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="코드범주별 문서 커버리지"><img src="figures/fig07_category_coverage.png" class="img-fluid figure-img" style="width:100.0%" alt="62문서를 분모로 한 코드범주별 커버리지; 복수 범주 소속 허용"></a></p>
+<figcaption>코드범주별 문서 커버리지</figcaption>
+</figure>
+</div>
+</section>
+<section id="정책-분류의-해석" class="level2">
+<h2 class="anchored" data-anchor-id="정책-분류의-해석">정책 분류의 해석</h2>
+<p>‘과제별·조건부’ 15문서는 조건·제한 근거를 탐지한 검토값입니다. 모든 문서에서 구체적인 과제별 허용표가 확인된 것은 아니며 대학 공통정책의 조건문이 포함될 수 있습니다. 명시 규칙 미확인 31문서를 AI 금지나 무규칙으로 치환하지 않았습니다. D005와 D008은 과제별 사용과 제한의 대조가 원문에서 확인된 사례입니다.</p>
+</section>
+<section id="선정판정의-다중평가자-일치도" class="level2">
+<h2 class="anchored" data-anchor-id="선정판정의-다중평가자-일치도">선정판정의 다중평가자 일치도</h2>
+<p>공통 이진값 179건 중 174건에서 3인이 완전일치했습니다. 완전일치율은 97.21%이며, Fleiss κ와 고정평가자 Conger κ는 각각 .9567, 항목별 부트스트랩 95% 구간은 .9173–.9912입니다 <span class="citation" data-cites="Fleiss1971 Conger1980">(<a href="references.html#ref-Conger1980" role="doc-biblioref">Conger, 1980</a>; <a href="references.html#ref-Fleiss1971" role="doc-biblioref">Fleiss, 1971</a>)</span>.</p>
+<p>채충일–박병화 Cohen κ는 공통 179건에서 .9347, 쌍별 유효 188건에서는 .8416이었습니다 <span class="citation" data-cites="Cohen1960">(<a href="references.html#ref-Cohen1960" role="doc-biblioref">Cohen, 1960</a>)</span>. 미확정 코드의 처리와 유효 집합에 따라 값이 달라질 수 있습니다.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="figures/fig09_selection_agreement.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="선정판정 일치도"><img src="figures/fig09_selection_agreement.png" class="img-fluid figure-img" style="width:100.0%" alt="179건 공통 이진판정의 174건 완전일치와 5건 불일치"></a></p>
+<figcaption>선정판정 일치도</figcaption>
+</figure>
+</div>
+</section>
+<section id="결과의-경계" class="level2">
+<h2 class="anchored" data-anchor-id="결과의-경계">결과의 경계</h2>
+<p>선정 일치도는 190건 전체의 최종합의나 내용코딩 신뢰도의 확인을 뜻하지 않습니다. 새 분류와 축코딩 해석도 독립 검증 전입니다.</p>
+<p>교차표는 문서 내 표현의 분포를, 사례분석은 그 표현의 대상과 맥락을 보여줍니다. 동일 실라버스를 이용한 분석들을 서로 독립된 확증으로 취급하지 않습니다. 문서적 병존은 학습효과의 추정치가 아니며, 강한 과제 수준 정렬을 주장하려면 목표·활동·제출물·루브릭의 연결을 별도로 확인해야 합니다.</p>
+<!-- pm:auto end -->
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+노트
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>현재 내용은 연구팀의 <strong>한글 원고 R2 검토본</strong>에 기반합니다. 새 분류·축코딩 해석의 독립 검증과 51건 내용 재분석은 진행 전이며, 문서의 설계를 실제 학습효과로 해석하지 않습니다.</p>
+</div>
+</div>
+</section>
+<section id="주요-관찰" class="level2">
+<h2 class="anchored" data-anchor-id="주요-관찰">주요 관찰</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>지표</th>
+<th>관찰값</th>
+<th>해석 범위</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>검토·성찰과 평가의 문서 내 병존</td>
+<td>22/62 (35.5%)</td>
+<td>동일 과제의 루브릭 정렬을 확인한 값은 아님</td>
+</tr>
+<tr class="even">
+<td>위 22문서 중 CT 직접 명시</td>
+<td>4/22 (18.2%)</td>
+<td>CT 명시와 활동설계는 구별</td>
+</tr>
+<tr class="odd">
+<td>AI 도구 근거</td>
+<td>54/62</td>
+<td>개발 역할과 중복 가능</td>
+</tr>
+<tr class="even">
+<td>AI 개발 근거</td>
+<td>28/62</td>
+<td>기술적 제작만으로 CT 성취를 판단하지 않음</td>
+</tr>
+<tr class="odd">
+<td>기존 세 유형에 미배정</td>
+<td>34/62</td>
+<td>H·I 27개, M·A 7개를 강제 분류하지 않음</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="figures/fig04_d4_matrix.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="인지요구와 CT 연결의 기존 판정"><img src="figures/fig04_d4_matrix.png" class="img-fluid figure-img" style="width:100.0%" alt="62문서 교차분포와 미분류34문서"></a></p>
+<figcaption>인지요구와 CT 연결의 기존 판정</figcaption>
+</figure>
+</div>
+<p><a href="figures/fig04_d4_matrix.png">PNG</a> · <a href="figures/fig04_d4_matrix.svg">SVG</a> · <a href="figures/fig04_d4_matrix.pdf">PDF</a></p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="figures/fig05_alignment_ct.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="활동·평가 분류별 CT 연결"><img src="figures/fig05_alignment_ct.png" class="img-fluid figure-img" style="width:100.0%" alt="각 분류의 E/I/A 비율과 문서 수"></a></p>
+<figcaption>활동·평가 분류별 CT 연결</figcaption>
+</figure>
+</div>
+<p><a href="figures/fig05_alignment_ct.png">PNG</a> · <a href="figures/fig05_alignment_ct.svg">SVG</a> · <a href="figures/fig05_alignment_ct.pdf">PDF</a></p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="figures/fig06_ai_roles.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="AI 역할과 검토·성찰"><img src="figures/fig06_ai_roles.png" class="img-fluid figure-img" style="width:100.0%" alt="중복 가능한 역할별 문서 내 병존 비율"></a></p>
+<figcaption>AI 역할과 검토·성찰</figcaption>
+</figure>
+</div>
+<p><a href="figures/fig06_ai_roles.png">PNG</a> · <a href="figures/fig06_ai_roles.svg">SVG</a> · <a href="figures/fig06_ai_roles.pdf">PDF</a></p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="figures/fig07_category_coverage.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="코드범주별 문서 커버리지"><img src="figures/fig07_category_coverage.png" class="img-fluid figure-img" style="width:100.0%" alt="62문서 분모와 복수범주소속 허용"></a></p>
+<figcaption>코드범주별 문서 커버리지</figcaption>
+</figure>
+</div>
+<p><a href="figures/fig07_category_coverage.png">PNG</a> · <a href="figures/fig07_category_coverage.svg">SVG</a> · <a href="figures/fig07_category_coverage.pdf">PDF</a></p>
+</section>
+<section id="선정판정의-다중평가자-일치도-1" class="level2">
+<h2 class="anchored" data-anchor-id="선정판정의-다중평가자-일치도-1">선정판정의 다중평가자 일치도</h2>
+<p>공통 이진값 179건 중 174건이 3인 완전일치하여 97.21%였습니다. Fleiss κ와 고정평가자 Conger κ는 각각 .9567이며, 항목별 부트스트랩 95% 구간은 .9173–.9912입니다 <span class="citation" data-cites="Fleiss1971 Conger1980">(<a href="references.html#ref-Conger1980" role="doc-biblioref">Conger, 1980</a>; <a href="references.html#ref-Fleiss1971" role="doc-biblioref">Fleiss, 1971</a>)</span>. 기본판정을 참고한 재평가이므로 독립 맹검 내용코딩으로 해석하지 않습니다.</p>
+<p>채–박 Cohen κ는 공통 179건에서 .9347, 쌍별 유효 188건에서는 .8416이었습니다 <span class="citation" data-cites="Cohen1960">(<a href="references.html#ref-Cohen1960" role="doc-biblioref">Cohen, 1960</a>)</span>. 미확정 코드가 포함된 자료의 처리에 따라 결과가 달라질 수 있습니다. 190건 전체의 최종합의나 내용코딩 검증을 완료한 수치가 아닙니다.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="figures/fig09_selection_agreement.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="3인 선정판정의 일치도"><img src="figures/fig09_selection_agreement.png" class="img-fluid figure-img" style="width:100.0%" alt="179공통이진판정 중174일치와5불일치"></a></p>
+<figcaption>3인 선정판정의 일치도</figcaption>
+</figure>
+</div>
+<p><a href="figures/fig09_selection_agreement.png">PNG</a> · <a href="figures/fig09_selection_agreement.svg">SVG</a> · <a href="figures/fig09_selection_agreement.pdf">PDF</a></p>
+</section>
+<section id="해석" class="level2">
+<h2 class="anchored" data-anchor-id="해석">해석</h2>
+<p>CT라는 단어의 명시와 실제 사고를 요구하는 과제설계는 서로 다른 관찰입니다. 문서 내 병존은 연결을 더 자세히 살필 출발점이며 학습효과의 추정치가 아닙니다. 현재 결과는 62문서 분석1이며 새 선정 51건의 결과로 대체하여 표기하지 않습니다.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-Cohen1960" class="csl-entry" role="listitem">
+Cohen, J. (1960). A Coefficient of Agreement for Nominal Scales. <em>Educational and Psychological Measurement</em>, <em>20</em>(1), 37–46. <a href="https://doi.org/10.1177/001316446002000104">https://doi.org/10.1177/001316446002000104</a>
+</div>
+<div id="ref-Conger1980" class="csl-entry" role="listitem">
+Conger, A. J. (1980). Integration and generalization of kappas for multiple raters. <em>Psychological Bulletin</em>, <em>88</em>(2), 322–328. <a href="https://doi.org/10.1037/0033-2909.88.2.322">https://doi.org/10.1037/0033-2909.88.2.322</a>
+</div>
+<div id="ref-Fleiss1971" class="csl-entry" role="listitem">
+Fleiss, J. L. (1971). Measuring nominal scale agreement among many raters. <em>Psychological Bulletin</em>, <em>76</em>(5), 378–382. <a href="https://doi.org/10.1037/h0031619">https://doi.org/10.1037/h0031619</a>
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "복사완료!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "복사완료!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./methods.html" class="pagination-link" aria-label="연구방법과 자료">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">연구방법과 자료</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./cases.html" class="pagination-link" aria-label="사례 비교와 축코딩">
+        <span class="nav-page-text"><span class="chapter-title">사례 비교와 축코딩</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 채충일 · 박병화 · 황태원 · 연구팀 검토본</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
